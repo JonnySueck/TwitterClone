@@ -20,6 +20,7 @@ from twitteruser import views
 
 urlpatterns = [
     path('', views.homepage, name='home'),
+    path('accounts/new/', views.signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ]
