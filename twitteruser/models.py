@@ -4,7 +4,5 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class MyCustomUser(AbstractUser):
-    username = models.CharField(
-    max_length=40,
-    null=True,
-    unique = True)
+    followers = models.IntegerField(default=0),
+    following = models.IntegerField(default=0),

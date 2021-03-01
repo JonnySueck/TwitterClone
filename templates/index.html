@@ -10,6 +10,12 @@
     <h3>welcome</h3>
     {% if user.is_authenticated %}
     <h1>welcome {{ user }}</h1>
+    <p>
+        followers: {{ user.followers }}
+        <br>
+        following: {{ user.followers }}
+
+    </p>
     <a href="/accounts/logout/">log-out</a>
     {% else %}
     <a href="/accounts/login/">please log in</a>

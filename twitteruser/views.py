@@ -9,7 +9,6 @@ def homepage(request):
     return render(request, 'index.html', {})
 
 
-@login_required
 def signup_view(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
