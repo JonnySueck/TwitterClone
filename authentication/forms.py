@@ -1,5 +1,5 @@
 from django import forms
-from .models import TwitterUser
+from twitteruser.models import TwitterUser
 from django.forms.widgets import PasswordInput
 
 
