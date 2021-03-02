@@ -7,6 +7,7 @@
     <title>welcome to the twitter clone</title>
 </head>
 <body>
+    {% block content %}
     {% if user.is_authenticated %}
     <h1>welcome {{ user.username }}</h1>
     <p>
@@ -18,8 +19,10 @@
 
     </p>
     <a href="/accounts/logout/">log-out</a>
+    {{ user_obj }}
     {% else %}
     <a href="/accounts/login/">please log in</a>
     {% endif %}
+    {% endblock %}
 </body>
 </html>

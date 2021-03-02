@@ -26,3 +26,10 @@ def signup_view(request):
     form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
+@ login_required
+def user_detail(request, user_id):
+    user_obj = MyCustomUser.objects.get(id=user_id)
+    return render(request, 'detail/user.html', {
+        "user": user_obj,
+    })
