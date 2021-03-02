@@ -7,6 +7,12 @@
     <title>Twitter Clone</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <header>
+        <a href="/tweet/new">Create a new tweet</a>
+        <a href="/accounts/logout/">log-out</a>
+    </header>
+    {% endif %}
     <main class="container">
         <div class="row">
             <div class="col">
