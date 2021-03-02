@@ -14,7 +14,7 @@ def signup_view(request):
                 username=data['username'],
 
             )
-            return HttpResponseRedirect('/')
+            return render(request, 'index.html', {'user_new': new_user})
 
     form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})

@@ -6,11 +6,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 # Create your views here.
+@login_required
 def homepage(request):
     return render(request, 'index.html', {})
 
 
-@ login_required
 def user_detail(request, user_id):
     user_obj = TwitterUser.objects.get(id=user_id)
     return render(request, 'detail/user.html', {
