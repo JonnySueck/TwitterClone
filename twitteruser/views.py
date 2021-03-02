@@ -2,7 +2,7 @@ from django.forms import models
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
-from .models import MyCustomUser
+from .models import TwitterUser
 from django.contrib.auth.models import AbstractUser
 
 
@@ -16,7 +16,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            new_user = MyCustomUser.objects.create_user(
+            new_user = TwitterUser.objects.create_user(
                 password=data['password'],
                 username=data['username'],
 
@@ -29,7 +29,7 @@ def signup_view(request):
 
 @ login_required
 def user_detail(request, user_id):
-    user_obj = MyCustomUser.objects.get(id=user_id)
+    user_obj = TwitterUser.objects.get(id=user_id)
     return render(request, 'detail/user.html', {
         "user": user_obj,
     })
