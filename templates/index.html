@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>welcome to the twitter clone</title>
-</head>
-<body>
-    {% block content %}
-    {% if user.is_authenticated %}
-    <h1>welcome {{ user.username }}</h1>
-    <p>
-        tweets: {{ user.tweets }}
-        <br>
-        followers: {{ user.followers }}
-        <br>
-        following: {{ user.followers }}
-        {{ form }}
-    </p>
-    <a href="/accounts/logout/">log-out</a>
-    {{ user_obj }}
-    {% else %}
-    <a href="/accounts/login/">please log in</a>
-    {% endif %}
-    {% endblock %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>
+    welcome {{ user.username }}
+</h1>
+<p>
+    tweets: {{ user.tweets }}
+    <br>
+    followers: {{ user.followers }}
+    <br>
+    following: {{ user.followers }}
+    {{ form }}
+</p>
+<a href="/accounts/logout/">log-out</a>
+{{ user_obj }}
+{% else %}
+<a href="/accounts/login/">please log in</a>
+{% endif %}
+{% endblock %}
