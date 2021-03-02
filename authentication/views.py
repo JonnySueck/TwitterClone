@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from .forms import SignupForm
 from twitteruser.views import TwitterUser
 
