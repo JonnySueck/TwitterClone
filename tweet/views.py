@@ -14,10 +14,9 @@ def add_tweet(request):
             data = form.cleaned_data
             Tweet.objects.create(
                 text=data['text'],
-                user=request.user.author,
-                date_posted=data['date_posted']
+                user=request.user
             )
             return HttpResponseRedirect('/')
 
     form = TweetForm()
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'tweet.html', {'form': form})

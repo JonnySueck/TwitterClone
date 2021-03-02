@@ -5,6 +5,9 @@
     welcome {{ user.username }}
 </h1>
 <p>
+    <a href="/tweet/new">Create a new tweet</a>
+    <a href="/accounts/logout/">log-out</a>
+    <br>
     tweets: {{ user.tweets }}
     <br>
     followers: {{ user.followers }}
@@ -12,7 +15,6 @@
     following: {{ user.followers }}
     {{ form }}
 </p>
-<a href="/accounts/logout/">log-out</a>
 {{ user_obj }}
 {% else %}
 <a href="/accounts/login/">please log in</a>
