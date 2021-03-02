@@ -1,7 +1,9 @@
+from django.forms import models
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from .models import MyCustomUser
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your views here.
