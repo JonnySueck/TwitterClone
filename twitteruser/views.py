@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import TwitterUser
 from django.contrib.auth.models import AbstractUser
 
-
 # Create your views here.
 @login_required
 def homepage(request):
