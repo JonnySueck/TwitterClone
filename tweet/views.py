@@ -22,7 +22,13 @@ def add_tweet(request):
     return render(request, 'tweet.html', {'form': form})
 
 
+def tweet_detail(request, post_id):
+    tweet = Tweet.objects.get(id=post_id)
+    return render(request, 'detail/tweet.html', {"tweet": tweet})
+
+
 def users_tweets(request, user_id):
-    user_tweets = Tweet.objects.all()
-    print(users_tweets)
-    return render(request, 'detail/user.html', {'tweets': user_tweets})
+    if request.method == 'GET':
+        users_tweets = Tweet.objects.all()
+        print(users_tweets)
+        return render(request, 'index.html', {'tweets': users_tweets})

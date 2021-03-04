@@ -6,14 +6,13 @@
 </h1>
 <p>
     <br>
-    tweets: {{ user.tweets }}
+    tweets:     
+    <!-- {% for tweet in tweets %}
+    {% endfor %} -->
+    {{ tweets }}
     <br>
-    followers: {{ user.followers }}
-    <br>
-    following: {{ user.followers }}
-    {{ form }}
+    following: {{ user.following }}
 </p>
-{{ user_obj }}
 {% else %}
 <a href="/accounts/login/">please log in</a>
 {% endif %}
