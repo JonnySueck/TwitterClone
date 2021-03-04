@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <p>
-    {{ user }}
-    {{ user.followers }}
-    {{ user.following }}
+    {{ user.username }}
 </p>
 <p>
     {{ user }}'s tweets:
-    {% for tweet in tweets %}
-    {{ tweet }}
-    {% endfor %}
+    <!-- {% for tweet in tweets %}
+    {% endfor %} -->
+    {{ tweets }}
 </p>
 {% endblock %}
