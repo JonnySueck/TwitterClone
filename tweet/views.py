@@ -5,12 +5,6 @@ from .forms import TweetForm
 from django.contrib.auth.decorators import login_required
 from twitteruser.models import TwitterUser
 
-def update_tweets(user_id):
-    editable = TwitterUser.objects.get(id=user_id)
-    editable.tweets += 1
-    editable.save()
-    return user_id
-
 
 # Create your views here.
 @ login_required
@@ -21,7 +15,6 @@ def add_tweet(request):
         if form.is_valid():
             data = form.cleaned_data
             user_id = request.user.id
-            update_tweets(user_id)
             Tweet.objects.create(
                 text=data['text'],
                 user=request.user
@@ -31,3 +24,8 @@ def add_tweet(request):
 
     form = TweetForm()
     return render(request, 'tweet.html', {'form': form})
+
+
+def users_tweets(request, user_id):
+    tweets = Tweet.objects.all(user=user_id)
+    return render(request, 'detail/user.html', {'tweets': tweets})

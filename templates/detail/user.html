@@ -4,5 +4,11 @@
     {{ user }}
     {{ user.followers }}
     {{ user.following }}
-</p> 
+</p>
+<p>
+    {{ user }}'s tweets:
+    {% for tweet in tweets %}
+    {{ tweet }}
+    {% endfor %}
+</p>
 {% endblock %}
