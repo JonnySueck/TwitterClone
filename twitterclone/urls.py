@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from twitteruser import views
 from authentication.views import signup_view
-from tweet.views import add_tweet, tweet_detail
+from tweet.views import add_tweet, tweet_detail, users_tweets
 
 
 urlpatterns = [
     path('', views.homepage, name='home'),
     path('tweet/new/', add_tweet, name='tweetnew'),
     path('tweet/<int:post_id>/', tweet_detail, name='tweetdetail'),
-    path('accounts/<int:user_id>/', views.user_detail, name='userdetail'),
+    path('accounts/<int:user_id>/', users_tweets, name='userdetail'),
     path('accounts/new/', signup_view, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),

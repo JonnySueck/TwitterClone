@@ -1,5 +1,4 @@
-from django.forms import models
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import TwitterUser
 

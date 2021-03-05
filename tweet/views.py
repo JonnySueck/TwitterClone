@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 @ login_required
 def add_tweet(request):
     if request.method == 'POST':
-        # create an instance and fill with request data
         form = TweetForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -24,11 +23,12 @@ def add_tweet(request):
 
 def tweet_detail(request, post_id):
     tweet = Tweet.objects.get(id=post_id)
-    return render(request, 'detail/tweet.html', {"tweet": tweet})
+    return render(request, 'detail/tweet.html', {'tweet': tweet})
 
 
 def users_tweets(request, user_id):
-    if request.method == 'GET':
-        users_tweets = Tweet.objects.all()
-        print(users_tweets)
-        return render(request, 'index.html', {'tweets': users_tweets})
+    users_tweets = Tweet.objects.filter(user=user_id)
+    num_tweets = len(users_tweets)
+    return render(request, 'detail/user.html', {
+        'tweets': users_tweets,
+        'num': num_tweets})
