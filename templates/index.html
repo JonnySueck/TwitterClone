@@ -13,7 +13,7 @@
 <ul>
     {% for tweet in news %}
         {%  if tweet.user in user.following.all %}
-        <li> {{ tweet.text }} by {{ tweet.user }} - {{ tweet.date_posted}} </li>
+        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
         {% endif %}
     {% endfor %}
 </ul>
