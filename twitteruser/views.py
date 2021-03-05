@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import TwitterUser
+from django.template import  RequestContext
 
 
 # Create your views here.
@@ -15,11 +16,10 @@ def user_detail(request, user_id):
 
 
 def follow(request, user_id):
-    if request.user != user_id:
-        user_to_follow = TwitterUser.objects.get(id=user_id)
-        id = request.user.id
-        editable = TwitterUser.objects.get(id=id)
-        editable.following.add(TwitterUser.objects.get(id=user_id))
-        editable.save()
-        return redirect('/')
-
+    id = request.user.id
+    editable = TwitterUser.objects.get(id=id)
+    if request.method == 'GET':
+        if request.user != user_id:
+            editable.following.add(TwitterUser.objects.get(id=user_id))
+            editable.save()
+            return render(request, 'index.html', {})

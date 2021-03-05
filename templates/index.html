@@ -5,7 +5,11 @@
     welcome {{ user.username }}
 </h1>
 <p>
-    following: {{ user.following }}
+    following:
+    {% for item in user.following.all %}
+        {{ item }}
+    {% endfor %}
+
 </p>
 {% else %}
 <a href="/accounts/login/">please log in</a>
