@@ -9,8 +9,14 @@
     {% for item in user.following.all %}
         {{ item }}
     {% endfor %}
-
 </p>
+<ul>
+    {% for tweet in news %}
+        {%  if tweet.user in user.following.all %}
+        <li> {{ tweet.text }} by {{ tweet.user }} - {{ tweet.date_posted}} </li>
+        {% endif %}
+    {% endfor %}
+</ul>
 {% else %}
 <a href="/accounts/login/">please log in</a>
 {% endif %}

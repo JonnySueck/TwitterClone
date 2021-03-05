@@ -2,8 +2,9 @@
 
 {% block content %}
 <br>
-<a href="/follow/{{ id }}/">follow</a>
-<a href="/unfollow/{{ id }}/">follow</a>
+welcome {{ user }}
+<a href="/follow/{{ id }}/">follow user</a>
+<a href="/unfollow/{{ id }}/">unfollow user</a>
 <p>
     tweets:{{ num }}
     {% for tweet in tweets %}

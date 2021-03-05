@@ -33,3 +33,13 @@ def users_tweets(request, user_id):
         'tweets': users_tweets,
         'num': num_tweets,
         'id': user_id})
+
+
+def newsfeed(request):
+    tweets = Tweet.objects.all()
+    ordered_tweets = reversed(tweets)
+    length = len(tweets)
+    return render(request, 'index.html', {
+        'news': ordered_tweets,
+        'len': length
+        })

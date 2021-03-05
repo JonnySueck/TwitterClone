@@ -12,7 +12,9 @@ def homepage(request):
 
 def user_detail(request, user_id):
     user_obj = TwitterUser.objects.get(id=user_id)
-    return render(request, 'detail/user.html', {"user": user_obj})
+    return render(request, 'detail/user.html', {
+        "user": user_obj,
+        })
 
 
 def follow(request, user_id):

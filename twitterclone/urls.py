@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from twitteruser import views
 from authentication.views import signup_view
-from tweet.views import add_tweet, tweet_detail, users_tweets
+from tweet.views import add_tweet, tweet_detail, users_tweets, newsfeed
 
 
 urlpatterns = [
     path('', views.homepage, name='home'),
+    path('tweets/', newsfeed, name='tweets'),
     path('tweet/new/', add_tweet, name='tweetnew'),
     path('tweet/<int:post_id>/', tweet_detail, name='tweetdetail'),
     path('follow/<int:user_id>/', views.follow, name='follow'),
