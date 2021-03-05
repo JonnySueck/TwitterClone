@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
+<a href="/follow/{{ id }}/">follow</a>
 <p>
-    <h1>{{ user }}'s tweets:</h1>
     tweets:{{ num }}
     {% for tweet in tweets %}
     <li> {{ tweet.text }} by {{ tweet.user }} - {{ tweet.date_posted}} </li>

@@ -31,4 +31,5 @@ def users_tweets(request, user_id):
     num_tweets = len(users_tweets)
     return render(request, 'detail/user.html', {
         'tweets': users_tweets,
-        'num': num_tweets})
+        'num': num_tweets,
+        'id': user_id})
