@@ -18,6 +18,7 @@ from django.urls import path, include
 from twitteruser import views
 from authentication.views import signup_view
 from tweet.views import add_tweet, tweet_detail, users_tweets, newsfeed
+import notifications.urls
 
 
 urlpatterns = [

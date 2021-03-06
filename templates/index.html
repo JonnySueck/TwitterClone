@@ -1,10 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
 {% if user.is_authenticated %}
 <h1>
     welcome {{ user.username }}
 </h1>
 <p>
+    notifications: 
+    <br>
     following:
     {% for item in user.following.all %}
         {{ item }}
@@ -14,6 +16,8 @@
     {% for tweet in news %}
         {%  if tweet.user in user.following.all %}
         <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
+        {%  elif tweet.user == request.user %}
+        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>    
         {% endif %}
     {% endfor %}
 </ul>
