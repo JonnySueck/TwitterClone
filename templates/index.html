@@ -6,9 +6,6 @@
 </h1>
 <p>
     notifications: {{ notifications.notifications }}
-    {% for tweet in mentioned %}
-    {{ tweet.text }},
-    {% endfor %}
     <br>
     following:
     {% for item in user.following.all %}
