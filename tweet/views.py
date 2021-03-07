@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import TweetForm
 from django.contrib.auth.decorators import login_required
 from twitteruser.views import user_detail, following
+from notification.models import notification
 
 
 # Create your views here.
@@ -42,8 +43,11 @@ def users_tweets(request, user_id):
 
 
 def newsfeed(request):
+    notify = notification(request)
+    notifications = notify.notifications
     tweets = Tweet.objects.all()
     ordered_tweets = reversed(tweets)
     return render(request, 'index.html', {
-        'news': ordered_tweets
+        'news': ordered_tweets,
+        'notifications': notifications
         })

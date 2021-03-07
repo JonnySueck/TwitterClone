@@ -23,9 +23,8 @@ from notification.views import notifications
 
 
 urlpatterns = [
-    path('', views.homepage, name='home'),
+    path('', newsfeed, name='newsfeed'),
     path('notifications/', notifications, name='notifications'),
-    path('tweets/', newsfeed, name='tweets'),
     path('tweet/new/', add_tweet, name='tweetnew'),
     path('tweet/<int:post_id>/', tweet_detail, name='tweetdetail'),
     path('follow/<int:user_id>/', views.follow, name='follow'),

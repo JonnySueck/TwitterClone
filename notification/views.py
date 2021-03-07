@@ -7,28 +7,18 @@ import schedule
 import datetime
 import time
 
-def check_for_new(request):
-    print('checking for changes')
-    user = request.user
-    num_tweets = Tweet.objects.filter(text__contains=f'@{user}')
-    check_len = len(num_tweets)
-    schedule.every(30).seconds.do(check_for_new)
-    return render(request, 'index.html', {'following': check_len})
-
-
+read = []
 # Create your views here.
 def notifications(request):
     user = request.user
     mentioned_tweets = Tweet.objects.filter(text__contains=f'@{user}')
     len_mentioned = len(mentioned_tweets)
-    editable = notification
-    while len_mentioned == check_for_new(request):
-        check_for_new(request)
-        time.sleep(5)
-    if check_for_new(request) > len_mentioned:
-        print('_____changes found_____')
-        editable.notifications = 1
-        editable.save()
+    editable = notification.notifications
+    editable = len_mentioned
+    print(editable)
+    for tweet in mentioned_tweets:
+        if tweet not in read:
+            read.append(tweet.text)
         
     return render(request, 'index.html', {
             'notifications': editable,
@@ -36,3 +26,7 @@ def notifications(request):
         })
     
 
+def clear_notifications(request):
+    editable = notification
+    editable.notifications = 0
+    return render(request, 'index.html', {'editable': editable})
