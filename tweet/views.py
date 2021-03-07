@@ -2,6 +2,7 @@ from tweet.models import Tweet
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import TweetForm
 from django.contrib.auth.decorators import login_required
+from twitteruser.views import user_detail, following
 
 
 # Create your views here.
@@ -27,12 +28,17 @@ def tweet_detail(request, post_id):
 
 
 def users_tweets(request, user_id):
+    user = user_detail(request, user_id)
+    follow = following(request, user_id)
     users_tweets = Tweet.objects.filter(user=user_id)
     num_tweets = len(users_tweets)
     return render(request, 'detail/user.html', {
         'tweets': users_tweets,
         'num': num_tweets,
-        'id': user_id})
+        'id': user_id,
+        'requser': user,
+        'following': follow
+        })
 
 
 def newsfeed(request):

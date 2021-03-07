@@ -11,10 +11,14 @@ def homepage(request):
 
 
 def user_detail(request, user_id):
-    user_obj = TwitterUser.objects.get(id=user_id)
-    return render(request, 'detail/user.html', {
-        "user": user_obj,
-        })
+    requested_user = TwitterUser.objects.get(id=user_id)
+    return requested_user
+
+
+def following(request, user_id):
+    user = TwitterUser.objects.get(id=user_id)
+    following = len(user.following.all())
+    return following
 
 
 def follow(request, user_id):

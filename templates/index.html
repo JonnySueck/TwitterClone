@@ -2,7 +2,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h1>
-    welcome {{ user.username }}
+    welcome {{ requser.username }}
 </h1>
 <p>
     notifications: {{ notifications.notifications }}
