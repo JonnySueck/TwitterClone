@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+{{ requser }}'s profile
+<p>
+    tweets: {{ num }}
+    <br>
+    following: {{ following }}
+    <hr>
+    {% for tweet in tweets %}
+    <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
+    {% endfor %}
+    <br>
+    <a href="/follow/{{ id }}/">follow user</a>
+    <a href="/unfollow/{{ id }}/">unfollow user</a>
+    
+</p>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% if user.is_authenticated %}
+<h1>
+    welcome {{ request.user }}
+    <br>
+    <a href="/accounts/{{request.user.id}}/">go to my profile</a>
+</h1>
+<p>
+    <a href="/notifications/">view notifications</a> {{ notifications.notifications }}
+    <br>
+    following:
+    {% for item in user.following.all %}
+        {{ item }}
+    {% endfor %}
+</p>
+<ul>
+    {% for tweet in news %}
+        {%  if tweet.user in user.following.all %}
+        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
+        {%  elif tweet.user == request.user %}
+        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>    
+        {% endif %}
+    {% endfor %}
+</ul>
+{% else %}
+<a href="/accounts/login/">please log in</a>
+{% endif %}
+{% endblock %}

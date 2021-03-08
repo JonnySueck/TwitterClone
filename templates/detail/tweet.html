@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>
+    {{ tweet.text }} by {{ tweet.user }}.
+    <br>
+    posted on {{ tweet.date_posted }}
+    
+</p>
+{% endblock %}
