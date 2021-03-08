@@ -19,12 +19,13 @@ from django.urls import path, include
 from twitteruser import views
 from authentication.views import signup_view
 from tweet.views import add_tweet, tweet_detail, users_tweets, newsfeed
-from notification.views import notifications
+from notification.views import notifications, clear_notifications
 
 
 urlpatterns = [
     path('', newsfeed, name='newsfeed'),
     path('notifications/', notifications, name='notifications'),
+    path('clearnotif/', clear_notifications, name='clearnotif'),
     path('tweet/new/', add_tweet, name='tweetnew'),
     path('tweet/<int:post_id>/', tweet_detail, name='tweetdetail'),
     path('follow/<int:user_id>/', views.follow, name='follow'),

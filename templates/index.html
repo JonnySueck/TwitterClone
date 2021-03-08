@@ -7,7 +7,7 @@
     <a href="/accounts/{{request.user.id}}/">go to my profile</a>
 </h1>
 <p>
-    notifications: {{ notifications }}
+    <a href="/notifications/">view notifications</a> {{ notifications.notifications }}
     <br>
     following:
     {% for item in user.following.all %}
