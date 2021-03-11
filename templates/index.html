@@ -14,12 +14,12 @@
         {{ item }}
     {% endfor %}
 </p>
-<ul>
+<ul class="list-group">
     {% for tweet in news %}
         {%  if tweet.user in user.following.all %}
-        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
+        <li class="list-group-item"><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
         {%  elif tweet.user == request.user %}
-        <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>    
+        <li class="list-group-item"><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>    
         {% endif %}
     {% endfor %}
 </ul>
