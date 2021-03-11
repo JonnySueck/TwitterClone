@@ -3,7 +3,6 @@ from django.db.models.signals import post_save
 from tweet.models import Tweet
 from twitteruser.models import TwitterUser
 from notification.models import notification
-import schedule
 import datetime
 import time
 

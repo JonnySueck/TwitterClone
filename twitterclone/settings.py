@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'notification',
     'tweet',
     'twitteruser',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

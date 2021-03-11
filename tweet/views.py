@@ -6,7 +6,6 @@ from twitteruser.views import user_detail, following
 from notification.models import notification
 from notification.views import notifications
 
-
 # Create your views here.
 @ login_required
 def add_tweet(request):
