@@ -1,12 +1,13 @@
 {% extends 'base.html' %} 
 {% block content %}
 {% if user.is_authenticated %}
-<h1>
+<br>
+<h3 class='bootstrap_label text-right' >
     welcome {{ request.user }}
-    <br>
+</h3>
+<p class='bootstrap_label text-right'>
     <a href="/accounts/{{request.user.id}}/">go to my profile</a>
-</h1>
-<p>
+    <br>
     <a href="/notifications/">view notifications</a> {{ notifications.notifications }}
     <br>
     following:
