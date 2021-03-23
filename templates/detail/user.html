@@ -2,8 +2,14 @@
 
 {% block content %}
 <br>
-{{ requser }}'s profile
-<p>
+
+<h3 class="boostrap_label text-right">
+    {{ requser }}'s profile
+</h3>
+<p class="boostrap_label text-right">
+    <a href="/follow/{{ id }}/">follow user</a>
+    <a href="/unfollow/{{ id }}/">unfollow user</a>
+    <br>
     tweets: {{ num }}
     <br>
     following: {{ following }}
@@ -11,9 +17,5 @@
     {% for tweet in tweets %}
     <li><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
     {% endfor %}
-    <br>
-    <a href="/follow/{{ id }}/">follow user</a>
-    <a href="/unfollow/{{ id }}/">unfollow user</a>
-    
 </p>
 {% endblock %}
