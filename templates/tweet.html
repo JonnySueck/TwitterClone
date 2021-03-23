@@ -4,8 +4,7 @@
 <br>
 <form method="POST">
     {% csrf_token %}
-    {% bootstrap_form form layout='inline'%}
+    {% bootstrap_form form layout='inline' %}
     {% bootstrap_button "Submit Tweet" button_type="submit" button_class="btn-primary" %}
-
 </form>
 {% endblock %}

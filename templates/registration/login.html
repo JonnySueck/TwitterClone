@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<h3>Please Log in to proceed.</h3>
-<a href="/accounts/new">Create a new account</a>
+<br>
+<h3 class="bootstrap_label text-center">Please Log in to proceed.</h3>
+<hr>
+<br>
 <form method="POST" class="form">
   {% csrf_token %}
-  {% bootstrap_form form %}
+  {% bootstrap_form form layout='inline' %}
+  <hr>
   {% buttons %}
-    <button type="submit">Log In</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </div>
   {% endbuttons %}
 </form>
+<p class="bootstrap_label text-center">
+<a href="/accounts/new">Or create a new account</a>
+</p>
 {% endblock %}
