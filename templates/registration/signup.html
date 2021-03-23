@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block content %}
-<h3>Create a new account!</h3>
+<br>
+<div class="text-center">
+    <h3>Create a new account!</h3>
+    <hr>
+    <br>
+</div>
+
 <form action='' method='POST'>
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="submit">
+    {% bootstrap_form form layout='inline' %}
+    {% buttons %}
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </div>
+    {% endbuttons %}
+    <!-- {{ form.as_p }} -->
+    <!-- <input type="submit" value="submit"> -->
 </form>
 {% endblock %}

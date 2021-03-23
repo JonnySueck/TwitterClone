@@ -5,6 +5,8 @@
 <form method="POST">
     {% csrf_token %}
     {% bootstrap_form form layout='inline' %}
-    {% bootstrap_button "Submit Tweet" button_type="submit" button_class="btn-primary" %}
+    <div class="text-center">
+        {% bootstrap_button "Submit Tweet" button_type="submit" button_class="btn-primary" %}
+    </div>
 </form>
 {% endblock %}
