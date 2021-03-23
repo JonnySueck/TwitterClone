@@ -21,9 +21,10 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 
+    <div id="content">
     {% if user.is_authenticated %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand href = '#" >Twitter Clone</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand href = '#" style="color:white">Twitter Clone</a>
 ​
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
@@ -50,5 +51,6 @@
             </div>
         </div>
     </main>
+    </div>
 </body>
 </html>
