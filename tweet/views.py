@@ -46,7 +46,7 @@ def newsfeed(request):
     print(notifications)
     notify = notification()
     notify = notify.notifications
-    tweets = Tweet.objects.all()
+    tweets = Tweet.objects.order_by('id')
     ordered_tweets = reversed(tweets)
     return render(request, 'index.html', {
         'news': ordered_tweets,

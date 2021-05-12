@@ -2,10 +2,10 @@
 {% block content %}
 {% if user.is_authenticated %}
 <br>
-<h3 class='bootstrap_label text-right' >
+<h3 class='text-left'>
     welcome {{ request.user }}
 </h3>
-<p class='bootstrap_label text-right'>
+<p class='bootstrap_label text-left'>
     <a href="/accounts/{{request.user.id}}/">go to my profile</a>
     <br>
     <a href="/notifications/">view notifications</a> {{ notifications.notifications }}
@@ -15,16 +15,29 @@
         {{ item }}
     {% endfor %}
 </p>
-<ul class="list-group">
+<div class="tweets">
     {% for tweet in news %}
         {%  if tweet.user in user.following.all %}
-        <li class="list-group-item"><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>
+        
+        <div class="card">
+            <a class="card-header" href="/accounts/{{ tweet.user.id }}/" >{{ tweet.user }}</a>
+            <a href="/tweet/{{ tweet.id }}/">
+                <div class="card-body">{{ tweet.text }}<br></a>{{ tweet.date_posted}}</div>
+        </div>
         {%  elif tweet.user == request.user %}
-        <li class="list-group-item"><a href="/tweet/{{ tweet.id }}/">{{ tweet.text }}</a> by <a href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> - {{ tweet.date_posted}} </li>    
+        <div class="card"></div>
+            <a class="card-header" href="/accounts/{{ tweet.user.id }}/">{{tweet.user }}</a> 
+            <a href="/tweet/{{ tweet.id }}/">
+                <div class="card-body">{{ tweet.text }}</a>   
+            <br>{{ tweet.date_posted}}</div>
+              
         {% endif %}
     {% endfor %}
-</ul>
+</div>
 {% else %}
-<a href="/accounts/login/">please log in</a>
+<br>
+<div class="text-center">
+    <h3><a href="/accounts/login/">please log in to proceed</a></h3>
+</div>
 {% endif %}
 {% endblock %}
